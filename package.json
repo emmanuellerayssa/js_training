@@ -1,0 +1,22 @@
+{
+  "name": "js_training",
+  "version": "1.0.0",
+  "description": "JS training 22/09/2023",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmanuellerayssa/js_training.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emmanuellerayssa/js_training/issues"
+  },
+  "homepage": "https://github.com/emmanuellerayssa/js_training#readme",
+  "dependencies": {
+    "server-lite": "^2.0.0"
+  }
+}

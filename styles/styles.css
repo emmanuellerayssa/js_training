@@ -29,6 +29,15 @@ header{
 /* meme-viewer */
 #meme-viewer{
     display: flex;
+    height: 100%;
+}
+/* meme-viewer first child*/
+#meme-viewer > *:first-child{
+    flex-grow: 1;
+}
+/* meme-viewer all children*/
+#meme-viewer > *{
+    height: 100%;
 }
 /* article */
 article{

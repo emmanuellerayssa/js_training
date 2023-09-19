@@ -1,6 +1,12 @@
+body{
+    height: 97vh; /*view height*/
+    width: 100vw;/*view height*/
+    background-color: rgb(214, 210, 210);
+}
+
 /*header*/
 header{
-    text-decoration: underline pink; 
+    text-decoration: underline rgb(20, 19, 19); 
     font-size:30pt;
 }
 /*We use # when an id is defined*/
@@ -9,6 +15,21 @@ header{
     font-weight:900;
 }
 #js{
-    color: skyblue;
+    color: rgb(196, 101, 175);
     font-style: oblique;
+}
+
+/* #main */
+#main{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+/* article */
+article{
+    flex-grow: 1;
+}
+/* footer */
+footer{
+    text-align: center;
 }

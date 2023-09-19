@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "JS training 22/09/2023",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "lite-server"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/emmanuellerayssa/js_training#readme",
   "dependencies": {
-    "server-lite": "^2.0.0"
+    "lite-server": "^2.6.1"
   }
 }

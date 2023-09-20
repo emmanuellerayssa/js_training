@@ -1,23 +1,29 @@
-function Meme() {
+function Meme(jsonConfiguredMemeStr) {
   /**
    * doc 
    */
-  this.texte = "texte du meme"; //this allows to make something public.
+  this.imageId = -1; //this allows to make something public.
+  this.texte = "";
+  this.x = 25;
+  this.y = 32;
+  this.color="#000000"
+  this.fontSize = 50;
+  this.fontWeight= "360";
+  this.underline = false;
+  this.italic = false;
 
-  var _imageId = 0; // _imageId is private thus, not accessible from outside the function
-  this.getImageId=function () {
-    return _imageId;
+  /**
+   * chargement de valeurs à partir d'un meme en json
+   * @param {string} jsonStr
+   */
+
+  this.loadFromString = function (jsonStr) {
+    Object.assign(this, JSON.parse(jsonStr));
+  };
+
+  if(jsonConfiguredMemeStr!==undefined){
+    this.loadFromString(jsonConfiguredMemeStr)
   }
-  function _changeImage(imageId) {
-    console.log("change image fn called");
-    _imageId = imageId;
-  }
-
-  this.changeImage=_changeImage; //Attach a private function to a public one
-
-  console.log("Meme called", this.texte);
-  _changeImage(25);
-  console.log(_imageId);
 }
 
 var meme = new Meme()

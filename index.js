@@ -1,15 +1,15 @@
-function initJs(color) {
-    //comment on one line
+function ihey(color) {
+  //comment on one line
 
-    /*Comment 
+  /*Comment 
     on multiple
     lines*/
 
-    /**
-     * This is the doc
-     * @param {string} color chaine de valeur de coueur css
-     * @return {undefined} pas de retour
-     */
+  /**
+   * This is the doc
+   * @param {string} color chaine de valeur de coueur css
+   * @return {undefined} pas de retour
+   */
   console.time("timekeeper");
   console.log("Show the arguments: ");
   console.log(arguments);
@@ -23,4 +23,28 @@ function initJs(color) {
   console.timeEnd("timekeeper");
 }
 
-initJs("DarkMagenta");
+function changePreHeader(color, nonutilise){
+    /**
+     * fonction d'initialisation du bandeau js
+     * @param {string} 
+     */
+    var jsLoadNode = document.querySelector("#is-js-loaded");
+    jsLoadNode.innerText = "Js is charged";
+    jsLoadNode.style.color = color;
+    jsLoadNode.style.textAlign = "center";
+    
+}
+
+function initJS(color){
+    changePreHeader(color);
+    document.querySelector('#do not click').addEventListener('click', function (evt) {
+        console.log(evt)
+    
+    })
+    
+}
+
+document.addEventListener('DOMContentLoaded', function (event) {
+    initJS("aquamarine");
+})
+

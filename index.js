@@ -51,11 +51,11 @@ function initJS(color) {
     console.log(evt);
     var meme={
         texte:evt.target['texte'].value,
-        x:evt.target['xtext'].value,
-        y:evt.target['ytext'].value,
+        x:Number(evt.target['xtext'].value),
+        y:Number(evt.target['ytext'].value),
         color: evt.target['fcolor'].value,
         fontweight:evt.target['fw'].value,
-        fontsize:evt.target['fs'].value
+        fontsize:Number(evt.target['fs'].value)
 
     }
     console.log(meme)

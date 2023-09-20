@@ -1,4 +1,15 @@
 function initJs(color) {
+    //comment on one line
+
+    /*Comment 
+    on multiple
+    lines*/
+
+    /**
+     * This is the doc
+     * @param {string} color chaine de valeur de coueur css
+     * @return {undefined} pas de retour
+     */
   console.time("timekeeper");
   console.log("Show the arguments: ");
   console.log(arguments);
@@ -12,4 +23,4 @@ function initJs(color) {
   console.timeEnd("timekeeper");
 }
 
-initJs("DarkMagenta", { a: 34, b: "123654" });
+initJs("DarkMagenta");

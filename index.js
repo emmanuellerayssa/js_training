@@ -23,28 +23,43 @@ function ihey(color) {
   console.timeEnd("timekeeper");
 }
 
-function changePreHeader(color, nonutilise){
-    /**
-     * fonction d'initialisation du bandeau js
-     * @param {string} 
-     */
-    var jsLoadNode = document.querySelector("#is-js-loaded");
-    jsLoadNode.innerText = "Js is charged";
-    jsLoadNode.style.color = color;
-    jsLoadNode.style.textAlign = "center";
-    
+function changePreHeader(color, nonutilise) {
+  /**
+   * fonction d'initialisation du bandeau js
+   * @param {string}
+   */
+  var jsLoadNode = document.querySelector("#is-js-loaded");
+  jsLoadNode.innerText = "Js is charged";
+  jsLoadNode.style.color = color;
+  jsLoadNode.style.textAlign = "center";
 }
 
-function initJS(color){
-    changePreHeader(color);
-    document.querySelector('#do not click').addEventListener('click', function (evt) {
-        console.log(evt)
-    
-    })
-    
+function initJS(color) {
+  changePreHeader(color);
+  document
+    .querySelector("#do-not-click")
+    .addEventListener("click", function (evt) {
+      console.log(evt);
+    });
+
+  /**
+   * @param {SubmitEvent} evt evt de soumission
+   */
+
+  function onformsubmit(evt) {
+    evt.preventDefault();
+    console.log(evt);
+    console.log('texte',evt.target['texte'].value );
+    console.log('x',evt.target['xtext'].value );
+    console.log('y',evt.target['ytext'].value );
+    console.log('color',evt.target['fcolor'].value );
+    console.log('fontweight',evt.target['fw'].value );
+    console.log('fontsize',evt.target['fs'].value );
+    //debugger;
+  }
+  document.forms["meme_form"].addEventListener("submit", onformsubmit);
 }
 
-document.addEventListener('DOMContentLoaded', function (event) {
-    initJS("aquamarine");
-})
-
+document.addEventListener("DOMContentLoaded", function (event) {
+  initJS("aquamarine");
+});

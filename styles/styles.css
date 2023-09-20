@@ -39,6 +39,17 @@ header{
 #meme-viewer > *{
     height: 100%;
 }
+#meme-viewer .col{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.col > div{
+    width: 48%;
+}
+.col input {
+    width: 90%;
+}
 /* article */
 article{
     flex-grow: 1;

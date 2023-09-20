@@ -71,10 +71,46 @@
               Riri the queen
             </text>
           </svg>
-          <div>droite</div>
+          <div>
+            <form action="/formulaireTraitement.php" name="meme_form" method="POST">
+              <h2> Edit Meme</h2>
+              <label for="meme_texte">texte</label>
+              <input type="text" name="texte" id="meme_texte">
+              <h3> Display Input</h3>
+              <div class="col">
+              <div>
+              <label for = "xtexte">x</label><br />
+              <input type="number" name="xtext" id="xtexte">
+              </div>
+              <div>
+              <label for = "ytexte">y</label><br />
+              <input type="number" name="ytext" id="ytexte">
+              </div>
+              </div>
+              <h2> Font parameters</h2>
+              <div>
+              <label for = "fcolor">Font Color</label>
+              <input type="color" name="fcolor" id="fcolor">
+            </div>
+            <div class="col">
+              <div>
+              <label for = "fw">Font-weight</label><br />
+              <input type="text" name="fw" id="fw">
+              </div>
+              <div>
+              <label for = "fs">Font-size</label><br />
+              <input type="text" name="fs" id="fs">
+              </div>
+            </div>
+            <div class="col">
+              <div><input type="reset" value="Reset"></div>
+              <div><button type="submit">Submit</button></div>
+            </div>
+            </form>
+          </div>
         </div>
       </article>
-      <button id="do not click" onclick="onbuttonclick('emmanuelle')">
+      <button id="do-not-click" onclick="onbuttonclick('emmanuelle')">
         Don't click here
       </button>
       <footer>Copyright &copy; 2023 emmanuellerayssa</footer>

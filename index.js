@@ -49,13 +49,24 @@ function initJS(color) {
   function onformsubmit(evt) {
     evt.preventDefault();
     console.log(evt);
-    console.log('texte',evt.target['texte'].value );
-    console.log('x',evt.target['xtext'].value );
-    console.log('y',evt.target['ytext'].value );
-    console.log('color',evt.target['fcolor'].value );
-    console.log('fontweight',evt.target['fw'].value );
-    console.log('fontsize',evt.target['fs'].value );
-    //debugger;
+    var meme={
+        texte:evt.target['texte'].value,
+        x:evt.target['xtext'].value,
+        y:evt.target['ytext'].value,
+        color: evt.target['fcolor'].value,
+        fontweight:evt.target['fw'].value,
+        fontsize:evt.target['fs'].value
+
+    }
+    console.log(meme)
+    
+    // console.log('texte',evt.target['texte'].value );
+    // console.log('x',evt.target['xtext'].value );
+    // console.log('y',evt.target['ytext'].value );
+    // console.log('color',evt.target['fcolor'].value );
+    // console.log('fontweight',evt.target['fw'].value );
+    // console.log('fontsize',evt.target['fs'].value );
+    // //debugger;
   }
   document.forms["meme_form"].addEventListener("submit", onformsubmit);
 }

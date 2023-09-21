@@ -1,6 +1,6 @@
-import {Meme} from './Meme.js' //Toujours à la première ligne
-import {ImageList} from './Image.js' //import * as ModuleImage from from './Image.js' si je veux tout importer
-let meme =new Meme();
+import { Meme } from "./Meme.js"; //Toujours à la première ligne
+import { ImagesList, listeImages } from "./Image.js"; //import * as ModuleImage from from './Image.js' si je veux tout importer
+let meme = new Meme();
 console.log(meme);
 function ihey(color) {
   //comment on one line
@@ -53,17 +53,16 @@ function initJS(color) {
   function onformsubmit(evt) {
     evt.preventDefault();
     console.log(evt);
-    var meme={
-        texte:evt.target['texte'].value,
-        x:Number(evt.target['xtext'].value),
-        y:Number(evt.target['ytext'].value),
-        color: evt.target['fcolor'].value,
-        fontweight:evt.target['fw'].value,
-        fontsize:Number(evt.target['fs'].value)
+    var meme = {
+      texte: evt.target["texte"].value,
+      x: Number(evt.target["xtext"].value),
+      y: Number(evt.target["ytext"].value),
+      color: evt.target["fcolor"].value,
+      fontweight: evt.target["fw"].value,
+      fontsize: Number(evt.target["fs"].value),
+    };
+    console.log(meme);
 
-    }
-    console.log(meme)
-    
     // console.log('texte',evt.target['texte'].value );
     // console.log('x',evt.target['xtext'].value );
     // console.log('y',evt.target['ytext'].value );
@@ -74,20 +73,25 @@ function initJS(color) {
   }
   document.forms["meme_form"].addEventListener("submit", onformsubmit);
 }
-
+const promiseImage = listeImages.loadFromRest();
 document.addEventListener("DOMContentLoaded", function (event) {
+  promiseImage.then((r) => {
+    loadSelectImages(listeImages);
+  });
+
   initJS("aquamarine");
 });
 
 /**
  * Chargement de la liste des options du select en fonction de la liste d'array d'image
- * @param {ImageList} images  liste d'image sous forme d'array ImageListe
+ * @param {ImagesList} images  liste d'image sous forme d'array ImagesListe
  */
 
-const loadSelectImages=(images)=>{
-  const select = document.querySelector('select#image');
+const loadSelectImages = (images = listeImages) => {
+  const select = document.querySelector("select#image");
   const noItem = select.item(0);
-  /*images.map(e=>{
+  /*mauvais car reconstruction dom pour tous les éléments à chaque passage dans le map.
+  images.map(e=>{
     const optText='<opion value="' +e.id+'">'+e.title+'</opion>';
     select.innerHTML+=optText;
   })
@@ -100,12 +104,7 @@ const loadSelectImages=(images)=>{
     optEleme.value = e.id;
     optEleme.innerHTML = e.title;
     select.appendChild(optEleme);
-
-    
   });
-  
+};
 
-}
-
-// window.lso = loadSelectImages;
-
+//window.lso = loadSelectImages;

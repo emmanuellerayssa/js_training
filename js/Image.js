@@ -57,7 +57,7 @@ export class ImageMeme extends ImageShort {
 
 export class ImagesList extends Array {
   loadFromRest() {
-    fetch("http://localhost:5679/images")
+    return fetch("http://localhost:5679/images")
       .then((response) => {
         return response.json();
       })
@@ -76,4 +76,4 @@ export class ImagesList extends Array {
 }
 
 export const listeImages = new ImagesList();
-listeImages.loadFromRest();
+//listeImages.loadFromRest();

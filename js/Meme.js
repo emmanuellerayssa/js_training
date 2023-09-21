@@ -1,4 +1,5 @@
-function Meme(jsonConfiguredMemeStr) {
+import {ImageMeme as Img} from  './Image.js'
+export function Meme(jsonConfiguredMemeStr) {
   /**
    * doc 
    */
@@ -11,6 +12,7 @@ function Meme(jsonConfiguredMemeStr) {
   this.fontWeight= "360";
   this.underline = false;
   this.italic = false;
+  this.image = new Img()
 
   /**
    * chargement de valeurs à partir d'un meme en json

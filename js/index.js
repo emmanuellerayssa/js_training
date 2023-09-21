@@ -1,3 +1,6 @@
+import {Meme} from './Meme.js' //Toujours à la première ligne
+let meme =new Meme();
+console.log(meme);
 function ihey(color) {
   //comment on one line
 
@@ -74,3 +77,6 @@ function initJS(color) {
 document.addEventListener("DOMContentLoaded", function (event) {
   initJS("aquamarine");
 });
+
+
+

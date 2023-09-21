@@ -29,7 +29,7 @@ class ImageShort {
   }
 }
 
-class ImageMeme extends ImageShort {
+export class ImageMeme extends ImageShort {
   //heritage
   title = "no image";
   id = undefined;
@@ -54,3 +54,26 @@ class ImageMeme extends ImageShort {
     }
   }
 }
+
+class ImagesList extends Array {
+  loadFromRest() {
+    fetch("http://localhost:5679/images")
+      .then((response) => {
+        return response.json();
+      })
+      .then((arr) => {
+        console.log(arr, this);
+        this.splice(0);
+        // arr.map((element, position, liste) => { // On peut remplacer map par forEach. map permet de récupérer le retour sous forme de var et forEach non
+        //   console.log(element, position, liste);
+        //   this.push(element);
+        //   console.log(this);
+        // });
+            this.push(...arr); //Spread operator permet de gérer les éléments d'un objet un par un
+            console.log(this);
+      });
+  }
+}
+
+export const listeImages = new ImagesList();
+listeImages.loadFromRest();

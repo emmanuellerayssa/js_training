@@ -1,4 +1,5 @@
 import {Meme} from './Meme.js' //Toujours à la première ligne
+import {ImageList} from './Image.js' //import * as ModuleImage from from './Image.js' si je veux tout importer
 let meme =new Meme();
 console.log(meme);
 function ihey(color) {
@@ -78,5 +79,33 @@ document.addEventListener("DOMContentLoaded", function (event) {
   initJS("aquamarine");
 });
 
+/**
+ * Chargement de la liste des options du select en fonction de la liste d'array d'image
+ * @param {ImageList} images  liste d'image sous forme d'array ImageListe
+ */
 
+const loadSelectImages=(images)=>{
+  const select = document.querySelector('select#image');
+  const noItem = select.item(0);
+  /*images.map(e=>{
+    const optText='<opion value="' +e.id+'">'+e.title+'</opion>';
+    select.innerHTML+=optText;
+  })
+  */
+
+  select.innerHTML = "";
+  select.appendChild(noItem);
+  images.map((e) => {
+    const optEleme = document.createElement("option");
+    optEleme.value = e.id;
+    optEleme.innerHTML = e.title;
+    select.appendChild(optEleme);
+
+    
+  });
+  
+
+}
+
+// window.lso = loadSelectImages;
 

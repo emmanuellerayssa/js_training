@@ -1,3 +1,4 @@
+import RestAdr, {REST_RESSOURCES} from "./constantes.js";
 class ImageShort {
   #uid; // # means private
   w = 100; // No need to use const or var in ES6
@@ -57,7 +58,7 @@ export class ImageMeme extends ImageShort {
 
 export class ImagesList extends Array {
   loadFromRest() {
-    return fetch("http://localhost:5679/images")
+    return fetch(`${RestAdr}${REST_RESSOURCES.images}`)
       .then((response) => {
         return response.json();
       })
@@ -69,8 +70,8 @@ export class ImagesList extends Array {
         //   this.push(element);
         //   console.log(this);
         // });
-            this.push(...arr); //Spread operator permet de gérer les éléments d'un objet un par un
-            console.log(this);
+        this.push(...arr); //Spread operator permet de gérer les éléments d'un objet un par un
+        console.log(this);
       });
   }
 }

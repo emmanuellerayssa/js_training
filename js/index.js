@@ -15,6 +15,8 @@ const fillFormDatas = (meme) => {
   formElement["fcolor"].value = meme.color;
   formElement["underline"].checked = meme.underline;
   formElement["italic"].checked = meme.italic;
+  formElement["shadow"].checked = meme.shadow;
+  formElement["stroke"].checked = meme.stroke;
 };
 
 const addFormEvents = () => {
@@ -64,6 +66,12 @@ const addFormEvents = () => {
   form["italic"].addEventListener("change", (evt) => {
     current.update({ italic: Number(evt.target.checked) });
   });
+  form["stroke"].addEventListener("change", (evt) => {
+    current.update({ stroke: Number(evt.target.checked) });
+  });
+  form["shadow"].addEventListener("change", (evt) => {
+    current.update({ shadow: Number(evt.target.checked) });
+  });
   form["image"].addEventListener("change", (evt) => {
     const id = Number(evt.target.value);
     const imagefound = listeImages.find((elementimage) => {
@@ -87,6 +95,13 @@ const renderMeme = (meme) => {
   texteElement.style.fill = meme.color;
   texteElement.style.textDecoration = meme.underline ? "underline" : "none";
   texteElement.style.fontStyle = meme.italic ? "italic" : "normal";
+  meme.shadow===true
+  ? texteElement.classList.add("shadow")
+  :texteElement.classList.remove("shadow")
+
+  meme.stroke===true
+  ? texteElement.classList.add("stroke")
+  :texteElement.classList.remove("stroke")
 
   svg.setAttribute("viewBox", `0 0 ${undefined!==meme.image ?meme.image.w:1000} ${undefined!==meme.image ?meme.image.h:1000}`);
   svg.querySelector("image").setAttribute("href", undefined!==meme.image?meme.image.url:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png");

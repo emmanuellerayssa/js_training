@@ -58,3 +58,12 @@ article{
 footer{
     text-align: center;
 }
+
+/*SVG CLASS */
+.shadow{
+    text-shadow: 10px 10px 10px 10px purple
+}
+
+.stroke{
+    stroke: cadetblue;
+}

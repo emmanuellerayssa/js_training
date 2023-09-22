@@ -13,6 +13,8 @@ export function Meme(jsonConfiguredMemeStr) {
   this.fontWeight = "360";
   this.underline = false;
   this.italic = false;
+  this.shadow = false;
+  this.stroke = true;
   this.image = undefined;
   this.render = undefined;
   const insideRender = () => {

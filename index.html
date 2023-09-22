@@ -54,12 +54,12 @@
           <svg
             width="100%"
             height="100%"
-            viewBox="0 0 1000 1000"
+            viewBox="0 0 1800 1800"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
           >
-            <image xlink:href="img/riri.jpg" x="0" y="0" />
+            <image xlink:href="img/image.jpg" x="0" y="0" />
             <text
               x="50"
               y="128"
@@ -68,50 +68,65 @@
               ;
               fill="pink"
             >
-              Riri the queen
+              My wife and kids
             </text>
           </svg>
           <div>
-            <form action="/formulaireTraitement.php" name="meme_form" method="POST">
-              <h2> Edit Meme</h2>
+            <form
+              action="/formulaireTraitement.php"
+              name="meme_form"
+              method="POST"
+            >
+              <h2>Edit Meme</h2>
               <hr />
-              <label for="image"><h3>image</h3></label><br/>
+              <label for="image"><h3>Image</h3></label><br />
               <select name="image" id="image">
-              <option value=-1>no images</option>
+                <option value="-1">no images</option>
               </select>
-              <hr/>
+              <hr />
               <label for="meme_texte">texte</label>
-              <input type="text" name="texte" id="meme_texte">
-              <h3> Display Input</h3>
+              <input type="text" name="texte" id="meme_texte" />
+              <h3>Display Input</h3>
               <div class="col">
-              <div>
-              <label for = "xtexte">x</label><br />
-              <input type="number" name="xtext" id="xtexte">
+                <div>
+                  <label for="xtexte">x</label><br />
+                  <input type="number" name="xtext" id="xtexte" />
+                </div>
+                <div>
+                  <label for="ytexte">y</label><br />
+                  <input type="number" name="ytext" id="ytexte" />
+                </div>
               </div>
+              <h2>Font parameters</h2>
               <div>
-              <label for = "ytexte">y</label><br />
-              <input type="number" name="ytext" id="ytexte">
+                <label for="fcolor">Font Color</label>
+                <input type="color" name="fcolor" id="fcolor" />
               </div>
+              <div class="col">
+                <div>
+                  <label for="fw">FontWeight</label><br />
+                  <input type="number" min="100" max="900" step="100" name="fw" id="fw" />
+                </div>
+                <div>
+                  <label for="fs">FontSize</label><br />
+                  <input type="number" name="fs" id="fs" />
+                </div>
               </div>
-              <h2> Font parameters</h2>
-              <div>
-              <label for = "fcolor">Font Color</label>
-              <input type="color" name="fcolor" id="fcolor">
-            </div>
-            <div class="col">
-              <div>
-              <label for = "fw">Font-weight</label><br />
-              <input type="text" name="fw" id="fw">
+              <hr />
+              <div class="col">
+                <div>
+                  <label for="underline">Underline</label><br />
+                  <input type="checkbox" name="underline" id="underline" />
+                </div>
+                <div>
+                  <label for="italic">italic</label><br />
+                  <input type="checkbox" name="italic" id="italic" />
+                </div>
+              <hr />
+              <div class="col">
+                <div><input type="reset" value="Reset" /></div>
+                <div><button type="submit">Submit</button></div>
               </div>
-              <div>
-              <label for = "fs">Font-size</label><br />
-              <input type="text" name="fs" id="fs">
-              </div>
-            </div>
-            <div class="col">
-              <div><input type="reset" value="Reset"></div>
-              <div><button type="submit">Submit</button></div>
-            </div>
             </form>
           </div>
         </div>

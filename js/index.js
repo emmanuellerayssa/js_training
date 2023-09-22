@@ -1,7 +1,101 @@
 import { Meme } from "./Meme.js"; //Toujours à la première ligne
 import { ImagesList, listeImages } from "./Image.js"; //import * as ModuleImage from from './Image.js' si je veux tout importer
-let meme = new Meme();
-console.log(meme);
+
+/**
+ * @param {Meme} meme
+ */
+
+const fillFormDatas = (meme) => {
+  const formElement = document.forms["meme_form"];
+  formElement["texte"].value = meme.texte;
+  formElement["xtext"].value = meme.x;
+  formElement["ytext"].value = meme.y;
+  formElement["fw"].value = meme.fontWeight;
+  formElement["fs"].value = meme.fontSize;
+  formElement["fcolor"].value = meme.color;
+  formElement["underline"].checked = meme.underline;
+  formElement["italic"].checked = meme.italic;
+};
+
+const addFormEvents = () => {
+  renderMeme(current);
+  fillFormDatas(current);
+  /**
+   * @param {SubmitEvent} evt evt de soumission
+   */
+
+  function onformsubmit(evt) {
+    evt.preventDefault();
+    const promiseSave = current.save();
+    promiseSave.then((obj) => {
+      //On récupérère la promesse du save. Lorsqu'on la récuperera, on pourra réinitialiser l'affichage et afficher le rendu de base.
+      current = new Meme();
+      current.render = renderMeme;
+      fillFormDatas(current);
+      renderMeme(current);
+    });
+    console.log(current);
+    //current.save();
+  }
+  const form = document.forms["meme_form"];
+  form.addEventListener("submit", onformsubmit);
+
+  form["texte"].addEventListener("input", (evt) => {
+    current.update({ texte: evt.target.value });
+  });
+  form["xtext"].addEventListener("input", (evt) => {
+    current.update({ x: Number(evt.target.value) });
+  });
+  form["ytext"].addEventListener("input", (evt) => {
+    current.update({ y: Number(evt.target.value) });
+  });
+  form["fcolor"].addEventListener("input", (evt) => {
+    current.update({ color: evt.target.value });
+  });
+  form["fw"].addEventListener("input", (evt) => {
+    current.update({ fontWeight: Number(evt.target.value) });
+  });
+  form["fs"].addEventListener("input", (evt) => {
+    current.update({ fontSize: Number(evt.target.value) });
+  });
+  form["underline"].addEventListener("change", (evt) => {
+    current.update({ underline: evt.target.checked });
+  });
+  form["italic"].addEventListener("change", (evt) => {
+    current.update({ italic: Number(evt.target.checked) });
+  });
+  form["image"].addEventListener("change", (evt) => {
+    const id = Number(evt.target.value);
+    const imagefound = listeImages.find((elementimage) => {
+      return elementimage.id === id;
+    });
+    current.update({ imageId: id, image: imagefound });
+  });
+  
+};
+
+const renderMeme = (meme) => {
+  /* rendu dom pour une meme*/
+  console.log(meme);
+  const svg = document.querySelector("svg");
+  const texteElement = svg.querySelector("text");
+  texteElement.innerHTML = meme.texte;
+  texteElement.setAttribute("y", meme.y);
+  texteElement.setAttribute("x", meme.x);
+  texteElement.style.fontSize = meme.fontSize;
+  texteElement.style.fontWeight = meme.fontWeight;
+  texteElement.style.fill = meme.color;
+  texteElement.style.textDecoration = meme.underline ? "underline" : "none";
+  texteElement.style.fontStyle = meme.italic ? "italic" : "normal";
+
+  svg.setAttribute("viewBox", `0 0 ${undefined!==meme.image ?meme.image.w:1000} ${undefined!==meme.image ?meme.image.h:1000}`);
+  svg.querySelector("image").setAttribute("href", undefined!==meme.image?meme.image.url:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png");
+};
+
+let current = new Meme();
+current.render = renderMeme;
+
+//console.log(meme);
 function ihey(color) {
   //comment on one line
 
@@ -46,32 +140,7 @@ function initJS(color) {
       console.log(evt);
     });
 
-  /**
-   * @param {SubmitEvent} evt evt de soumission
-   */
-
-  function onformsubmit(evt) {
-    evt.preventDefault();
-    console.log(evt);
-    var meme = {
-      texte: evt.target["texte"].value,
-      x: Number(evt.target["xtext"].value),
-      y: Number(evt.target["ytext"].value),
-      color: evt.target["fcolor"].value,
-      fontweight: evt.target["fw"].value,
-      fontsize: Number(evt.target["fs"].value),
-    };
-    console.log(meme);
-
-    // console.log('texte',evt.target['texte'].value );
-    // console.log('x',evt.target['xtext'].value );
-    // console.log('y',evt.target['ytext'].value );
-    // console.log('color',evt.target['fcolor'].value );
-    // console.log('fontweight',evt.target['fw'].value );
-    // console.log('fontsize',evt.target['fs'].value );
-    // //debugger;
-  }
-  document.forms["meme_form"].addEventListener("submit", onformsubmit);
+  addFormEvents();
 }
 const promiseImage = listeImages.loadFromRest();
 document.addEventListener("DOMContentLoaded", function (event) {
